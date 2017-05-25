@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title>Data Base SQLite</title>
+<script language="javascript">
+function cargar(){
+	var db = openDatabase("MiBaseDatos", "1.0", "Comentario sobre BD", 2 * 1024 * 1024);
+	db.transaction(function(tx){
+		tx.executeSql("CREATE TABLE IF NOT EXISTS DATOS (codigo unique, nombre)");
+		tx.executeSql("INSERT INTO DATOS (codigo, nombre) VALUES (1, 'Pepe')");
+		tx.executeSql("INSERT INTO DATOS (codigo, nombre) VALUES (2, 'Juan')");
+	});	
+}
+</script>
+</head>
+
+<body onload="cargar()">
+
+</body>
+
+</html>
